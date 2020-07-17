@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+    <a href="{% url 'pets:calender-create' %}">New Appointment</a>
+    <h1>All Appointments</h1>
+    {% if dates %}
+        <ul>
+        {% for date in dates %}
+            <li>
+                Pet: {{ date.pet }}<br>
+                Date : {{ date.date_of_appointment }}<br>
+                Duration: {{ date.duration_minutes }}<br>
+                Special Instructions: {{ date.special_instructions }}
+            </li>
+        {% endfor %}
+
+        </ul>
+        
+
+    {% endif %}
+{% endif %}
+{% endblock content %}

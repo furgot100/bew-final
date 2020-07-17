@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+    <h1>{{ pet.pet_name }}</h1>
+    {% if pet.owner %}
+        <p>Owner: {{ pet.owner.username }}</p>
+    {% endif %}
+    Species: {{ pet.species }}<br>
+    Breed: {{ pet.breed }}<br>
+    Weight: {{ pet.weight_in_pounds }} pound(s)<br>
+
+    <h2>Appointments:</h2>
+    {% for date in dates %}
+        
+        <ul>
+            <li>
+                Appointment date: {{ date.date_of_appointment }}<br>
+                Duration: {{ date.duration_minutes }} minutes<br>
+                {{ date.pet}}
+            </li>
+        </ul>
+    {% endfor %}    
+        <!-- <p>No appointments</p> -->
+
+{% endif %}
+
+
+{% endblock content %}
+
+
+

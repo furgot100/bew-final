@@ -1,0 +1,25 @@
+<p align="right">
+    {% if request.user.is_authenticated %}
+        Hello, {{ request.user.username }}! 
+        <a href="/create">New Pet</a>
+        <a href="/accounts/logout">Logout</a>
+
+        
+    {% endif %}
+    {% if not request.user.is_authenticated %}
+        <a href="/accounts/login">Login</a> 
+        <a href="/registration/signup">Sign Up</a>
+    {% endif %}
+</p>
+<p align="left">
+    <a href="{% url 'pets:home' %}">Home</a>
+    <a href="{% url 'pets:calender' %}">Calender</a>
+</p>
+    
+
+
+{% block content %}
+<p>
+    This is a placeholder block.
+</p>
+{% endblock %}
